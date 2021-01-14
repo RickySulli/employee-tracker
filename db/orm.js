@@ -1,7 +1,7 @@
 /////orm for bridgint betweren 
 ////import connection
 const connection = require('./connection');
-
+const init = require('../app')
 
 ////db as a class
 class DB {
@@ -28,6 +28,7 @@ class DB {
         INNER JOIN department ON employee.department_id = department.id
         `
         return this.connection.query(queryString)
+        
     }
     
     viewByRole(){
@@ -69,9 +70,5 @@ class DB {
         return this.connection.query(queryString, [first_name, last_name, role_id])
     }
 }
-
-
-
-
 
 module.exports = new DB(connection)

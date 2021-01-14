@@ -31,12 +31,13 @@ const mainMenu = [
     ],
   },
 ];
+/// make an async function that uses prompt to display mainMenu to the user or use a .then statement.  use switch statement
 function init() {
-  inquirer.prompt(start)
+  inquirer.prompt(mainMenu)
   .then((response) => {
-    
+    console.log(response)
     ///switch statemtent CASE
-    switch(response.start) {
+    switch(response.mainMenu) {
       case "Add Employee":
         addEmployee();
         break;
@@ -67,11 +68,23 @@ function init() {
   })
 
 }
-///return methods from 
 
-////////function for viewDepartments output=list in inquirer
-/////function for viewRoles
+const newEmployee = () => {
+  inquirer.prompt ([
+    {
+      type: "input",
+      name: "first_name",
+      message: "What is the employee's first name?"
+    }
+  ])
+  .then(addEmployee(newEmployee))
+}
+  
+///return methods from 
 /////function for viewEmployees
+/////function for viewRoles
+
+////function for viewDepartments output=list in inquirer
 ///function for viewByRole
 ////function for viewByDept
 ////fucntion for addDepartment
@@ -93,4 +106,13 @@ function init() {
   });
   
 
+  // async function loadMainPrompts() {
+  //    const { start } = await inquirer.prompt(mainMenu)
+  //    console.log(start);
+  //  }
 
+   
+  //  loadMainPrompts();
+
+  init();
+ 
